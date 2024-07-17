@@ -65,13 +65,14 @@
         <table>
             <thead>
                 <tr>
-                    <th>Grade 1</th>
-                    <th>Grade 2</th> <!-- New column header for Grade 2 input -->
+                    <th>Current Grade</th> <!-- Updated label for Grade 1 -->
+                    <th>Potential Grade</th> <!-- Updated label for Grade 2 -->
                     <th>AP Class</th>
                     <th>Include in GPA</th>
                 </tr>
             </thead>
             <tbody>
+                <!-- Repeat this block for each row (class) -->
                 <tr>
                     <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
                     <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td> <!-- New input for Grade 2 -->
@@ -88,24 +89,135 @@
                         </select>
                     </td>
                 </tr>
-                <!-- Repeat the above <tr> block for each additional subject -->
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td><input type="number" min="0" max="100" step="1" placeholder="Grade"></td>
+                    <td>
+                        <select>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <button onclick="calculateGPA()">Calculate GPA</button>
-        <p id="gpaResult1"></p> <!-- Placeholder for GPA Result 1 -->
-        <p id="gpaResult2"></p> <!-- Placeholder for GPA Result 2 -->
+        <p id="gpaResult1"></p> <!-- Placeholder for Current Honors GPA -->
+        <p id="gpaResult2"></p> <!-- Placeholder for Potential GPA -->
     </div>
 
     <script>
         function calculateGPA() {
             let rows = document.querySelectorAll("tbody tr");
-            let totalGradePoints1 = 0; // Total grade points for GPA 1
-            let totalGradePoints2 = 0; // Total grade points for GPA 2
+            let totalGradePoints1 = 0; // Total grade points for Current Honors GPA
+            let totalGradePoints2 = 0; // Total grade points for Potential GPA
             let totalSubjects = 0;
 
             rows.forEach(row => {
                 let grade1 = parseFloat(row.querySelector("td:nth-child(1) input").value);
-                let grade2 = parseFloat(row.querySelector("td:nth-child(2) input").value); // Retrieve Grade 2 input
+                let grade2 = parseFloat(row.querySelector("td:nth-child(2) input").value); // Retrieve Potential Grade input
                 let isAPClass = parseInt(row.querySelector("td:nth-child(3) select").value);
                 let includeInGPA = parseInt(row.querySelector("td:nth-child(4) select").value);
 
@@ -114,20 +226,20 @@
                     totalGradePoints1 += calculateGradePoints(grade1, isAPClass);
                 }
 
-                if (!isNaN(grade2) && includeInGPA === 1) { // Calculate GPA 2 if grade is valid and included
+                if (!isNaN(grade2) && includeInGPA === 1) { // Calculate Potential GPA if grade is valid and included
                     totalGradePoints2 += calculateGradePoints(grade2, isAPClass);
                 }
             });
 
             if (totalSubjects > 0) {
                 let gpa1 = totalGradePoints1 / totalSubjects;
-                let gpa2 = totalGradePoints2 / totalSubjects; // Calculate GPA 2
+                let gpa2 = totalGradePoints2 / totalSubjects; // Calculate Potential GPA
 
-                document.getElementById("gpaResult1").innerText = "Your GPA 1: " + gpa1.toFixed(2);
-                document.getElementById("gpaResult2").innerText = "Your GPA 2: " + gpa2.toFixed(2);
+                document.getElementById("gpaResult1").innerText = "Your Current Honors GPA: " + gpa1.toFixed(2);
+                document.getElementById("gpaResult2").innerText = "Your Potential GPA: " + gpa2.toFixed(2);
             } else {
                 document.getElementById("gpaResult1").innerText = "Please enter valid grades and select at least one to include in GPA calculation.";
-                document.getElementById("gpaResult2").innerText = ""; // Clear GPA 2 result if no valid input
+                document.getElementById("gpaResult2").innerText = ""; // Clear Potential GPA result if no valid input
             }
         }
 
@@ -189,3 +301,4 @@
     </script>
 </body>
 </html>
+
